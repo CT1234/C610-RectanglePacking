@@ -1,17 +1,16 @@
 import java.util.ArrayList;
 
-public class CheckFit {
+public class CheckExactFit {
 	
 	private Rectangle[] rectangles;
 	private ArrayList<Factor> factors;
 	
-	public CheckFit(Rectangle[] rectangles, ArrayList<Factor> factors) {
+	public CheckExactFit(Rectangle[] rectangles, ArrayList<Factor> factors) {
 		this.rectangles = rectangles;
 		this.factors = factors;
 	}
 		    
     private int[][] createBoard(int a, int b) {
-    	System.out.println("......Creating board: " + a + " x " + b);
         int[][] boardArray = new int[a][b];
         for (int i = 0; i < a; i++) {
             for (int j = 0; j < b; j++) {
@@ -29,8 +28,6 @@ public class CheckFit {
     		System.out.println();
     	}
 		System.out.println();
-		System.out.println();
-
     }
     
 	public boolean checkRectangleFit() {
@@ -56,8 +53,9 @@ public class CheckFit {
     private void insertRectangles (int row, int col, int rectIndex, int[][] currentBoard) {
         
         if (rectIndex == rectangles.length) {
+        	System.out.println("EXACT (BRUTE FORCE) SOLUTION:\n");
         	printBoard(currentBoard);
-        	System.out.println("SOLUTION FOUND");
+        	System.out.println("Min Area: " + currentBoard.length + " x " + currentBoard[0].length);
         	System.exit(0);
         }
         
@@ -72,13 +70,9 @@ public class CheckFit {
                 for (int j = row; j < (currentRect.getVert() + row) && j < currentBoard.length; j++) {
                     if (currentBoard[j][i] == 0) {
                         currentBoard[j][i] = 1+rectIndex;
-//                    	printBoard(currentBoard);
                         countArea++;
                         if (countArea == currentRect.getArea()) {
-//                            	System.out.println("Rectangle inserted!");
-//                            	printBoard(currentBoard);
-                            insertRectangles(0, 0, rectIndex+1, currentBoard.clone());
-                            //rectangle fits, call next rectangle try every spot in the board
+                            insertRectangles(0, 0, rectIndex+1, currentBoard);
                         }
                     } else {
                     	flag = false;

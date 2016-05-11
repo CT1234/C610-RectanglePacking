@@ -1,13 +1,13 @@
 import java.util.ArrayList;
 
-public class CheckFit {
+public class CheckOptimizedFit {
 	
 	private Rectangle[] rectangles;
 	private ArrayList<Factor> factors;
 	private int maxHoriz;
 	private int maxVert;
 	
-	public CheckFit(Rectangle[] rectangles, ArrayList<Factor> factors, int minHoriz, int minVert) {
+	public CheckOptimizedFit(Rectangle[] rectangles, ArrayList<Factor> factors, int minHoriz, int minVert) {
 		this.rectangles = rectangles;
 		this.factors = factors;
 		this.maxHoriz = minHoriz;

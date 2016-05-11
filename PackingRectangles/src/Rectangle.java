@@ -9,6 +9,10 @@ public class Rectangle {
 	public int getVert() {
 		return vert;
 	}
+	
+	public Integer getVertObj() {
+		return new Integer(vert);
+	}
 
 	public int getArea() {
 		return area;
